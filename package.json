@@ -1,0 +1,16 @@
+{
+  "name": "state-of-js-analysis",
+  "version": "0.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:NullVoxPopuli/state-of-js-analysis.git",
+  "author": "NullVoxPopuli",
+  "license": "MIT",
+  "private": true,
+  "volta": {
+    "node": "14.15.1",
+    "yarn": "1.22.10"
+  },
+  "dependencies": {
+    "execa": "^5.0.0"
+  }
+}
