@@ -5,11 +5,22 @@ const fs = legacyFs.promises;
 const path = require("path");
 const ndjson = require("iterable-ndjson");
 
-const aggregatePath = path.join(__dirname, "stats.json");
+const TOOLS = ["ember", "angular", "nextjs", "vuejs", "svelte", "react"];
 
 let dataByYear = {};
+// https://share.getcloudapp.com/NQuKg4le
+async function main() {
+  await ensureData();
 
-const TOOLS = ["ember", "angular", "nextjs", "vuejs", "svelte", "react"];
+  console.log(dataByYear);
+}
+
+main();
+/**
+ * ----------------------------------
+ * ----------------------------------
+ */
+const aggregatePath = path.join(__dirname, "stats.json");
 
 const INITIAL_DATA_FOR_TOOL = Object.freeze({
   answered: 0,
@@ -25,18 +36,6 @@ const INITIAL_DATA_FOR_YEAR = Object.freeze({
   incompleteEntries: 0,
 });
 
-// https://share.getcloudapp.com/NQuKg4le
-async function main() {
-  await ensureData();
-
-  console.log(dataByYear);
-}
-
-main();
-/**
- * ----------------------------------
- * ----------------------------------
- */
 async function ensureData() {
   if (!(await dataAlreadyParsed())) {
     let files = await getFiles();
